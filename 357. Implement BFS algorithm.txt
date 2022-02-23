@@ -1,0 +1,20 @@
+public ArrayList<Integer> bfsOfGraph(int n, ArrayList<ArrayList<Integer>> adj) {
+    Queue<Integer> q = new LinkedList<>();
+    boolean[] set = new boolean[n];
+    ArrayList<Integer> res = new ArrayList<>(n);
+    
+    q.add(0);
+    set[0] = true;
+    
+    while (!q.isEmpty()) {
+        int cur = q.poll();
+        res.add(cur);
+        for (int neighbour : adj.get(cur))
+            if (!set[neighbour]) {
+                q.add(neighbour);
+                set[neighbour] = true;
+            }
+    }
+    
+    return res;
+}

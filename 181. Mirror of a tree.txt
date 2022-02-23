@@ -1,0 +1,8 @@
+Node reverse (Node root) {
+    if (root == null) return null;
+    
+    root.left = reverse(root.right);
+    root.right = reverse(root.left);
+    
+    return root;
+}
