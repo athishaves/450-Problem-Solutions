@@ -1,0 +1,25 @@
+class Solution {
+    
+    static boolean ispar (String x) {
+        Stack<Character> stack = new Stack<>();
+        for (char i : x.toCharArray()) {
+            if (open(i)) stack.add(i);
+            else {
+                if (stack.isEmpty()) return false;
+                if (!pair(stack.pop(), i)) return false;
+            }
+        }
+        return stack.size() == 0;
+    }
+    
+    static boolean open (char a) {
+        return a=='{' || a=='[' || a=='(';
+    }
+    
+    static boolean pair (char a, char b) {
+        if (a == '(') return b == ')';
+        if (a == '[') return b == ']';
+        return b == '}';
+    }
+    
+}
